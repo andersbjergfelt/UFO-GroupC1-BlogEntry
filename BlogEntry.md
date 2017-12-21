@@ -9,14 +9,13 @@ Anders Bjergfelt**
 
 *Man er ikke sikret imod et injektion angreb fordi man vælger en NoSQL database. Ens system vil stadig være sårbar og konsekvenserne er, at din data forsvinder. Prepared Statements fra SQL-verdenen findes ikke i NoSQL, og derfor skal der ses på andre metoder. NoSQL injections er lette at sikre sig imod. Det kræver blot, at man adresserer enkle forbehold og følger dem. Det vil gøre dit system uskadeligt for en af de farligste sikkerhedsrisici.*
 
+Dette blogindlæg vil vi kort diskutere og vise, hvordan en NoSQL database kan være sårbar over for NoSQL injektioner og hvordan man kan forhindre dem. Der fokuseres på MongoDB som [den mest populære NoSQL database i øjeblikket](https://db-engines.com/en/ranking). Begreber som bliver beskrevet i dette blogindlæg er også aktuelle for andre NoSQL databaser.
 
 ## SQL Injection
 
 De fleste kender SQL injections. Det er et velkendt angreb der foregår ved, at en ondsindet bruger tilføjer kode ind via et input felt, som ender i en database query, der bliver eksekveret. 
 
 Man undgår desværre ikke problemet ved at vælge en NoSQL database. Ens website vil stadig være sårbar for de former for angreb. Et lignede angreb mod en NoSQL database kaldes for en NoSQL injektion og har samme fremgangsmåde og konsekvenser som en SQL injektion. De resulterer oftest i, at data forsvinder eller bliver korrupt. 
-
-Dette blogindlæg vil vi kort diskutere og vise, hvordan en NoSQL database kan være sårbar over for NoSQL injektioner og hvordan man kan forhindre dem. Der fokuseres på MongoDB som [den mest populære NoSQL database i øjeblikket](https://db-engines.com/en/ranking). Begreber som bliver beskrevet i dette blogindlæg er også aktuelle for andre NoSQL databaser.
 
 ## NoSQL og SQL databaser adskiller sig på mange måder fra hinanden. 
 
