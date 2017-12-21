@@ -128,4 +128,10 @@ For at sikre sig imod NoSQL injektioner, skal man huske ALTID at validere ALT in
 
 Software sikkerhed har de sidste år været højt på dagsordenen, og vil i de næste mange år fortsætte med at være det indenfor softwareudvikling. Data er i dag i rigtig høj kurs, og derfor er det vigtigere end aldrig før at beskytte sine data imod at falde i de forkertes hænder. Det er simpelthen så vigtigt at man som udvikler, sikre sig ordentligt imod velkendte angreb. Der vil uden tvivl i fremtiden være et langt større fokus på sikkerhed indenfor IT og udvikling. 
 
-Litteratur: https://ckarande.gitbooks.io/owasp-nodegoat-tutorial/content/tutorial/a1_-_sql_and_nosql_injection.htmlhttps://www.owasp.org/index.php/Testing_for_NoSQL_injection https://blog.sqreen.io/mongodb-will-not-prevent-nosql-injections-in-your-node-js-app/ https://software-talk.org/blog/2015/02/mongodb-nosql-injection-security/
+Litteratur: 
+
+https://ckarande.gitbooks.io/owasp-nodegoat-tutorial/content/tutorial/a1_-_sql_and_nosql_injection.html
+
+https://www.owasp.org/index.php/Testing_for_NoSQL_injection 
+
+https://blog.sqreen.io/mongodb-will-not-prevent-nosql-injections-in-your-node-js-app/ https://software-talk.org/blog/2015/02/mongodb-nosql-injection-security/
