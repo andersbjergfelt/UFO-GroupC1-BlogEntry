@@ -42,7 +42,8 @@ I disse tilfælde skal du være varsom med at bruge de operationer. Hvis du brug
 ## Test af NoSQL injection sårbarheder i MongoDB
 MongoDB forventer BSON objekter. Det forhindrer ikke, at det er muligt at query serialiseret JSON og JavaScript-udtryk i parametrene. Operatøren *$where* er det mest almindelige API-opkald, der tillader vilkårlige JavaScript-udtryk. $where operatøren anvendes normalvis som et filter.
 
-```javascript db.myCollection.find( { $where: "this.username == this.name" } );
+```javascript 
+db.myCollection.find( { $where: "this.username == this.name" } );
 ```
 Hvis en ondsindet bruger kunne manipulere dataene, der blev sendt til operatøren $where og tilførte JavaScript, der skulle evalueres, kunne angrebet være string ''; return \ '' == \ '' og $where vil blive evalueret til this.name == ''; returnere '' == '', hvilket vil resultere i at alle brugere vil blive returneret i stedet for kun dem der matchede $where.
 
