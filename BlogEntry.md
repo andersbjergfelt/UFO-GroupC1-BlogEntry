@@ -88,7 +88,7 @@ Her er en liste over de [mest populære javascript sanitize biblioteker](https:/
 
 * Valider input for at beskytte imod skadelige værdier. I NoSQL-databaser kan du også validere inputtyper mod forventede typer.
 
-* [Deaktivér serverside JavaScript fuldstændigt via --noscripting.] (Https://docs.mongodb.com/manual/faq/fundamentals/#how-does-mongodb-address-sql-or-query-injection) Operationerne, $where, mapReduce og group bliver ubrugelige
+* [Deaktivér serverside JavaScript fuldstændigt via --noscripting.](https://docs.mongodb.com/manual/faq/fundamentals/#how-does-mongodb-address-sql-or-query-injection) Operationerne, $where, mapReduce og group bliver ubrugelige
 
 * Det er vigtigt at sikre, at inputtet fra brugeren, der modtages i APIet, ikke indeholder et tegn, der har en særlig betydning i f.eks MongoDB
 * Det er også vigtigt ikke at bruge string concatenation til at opbygge API kald, men at bruge det tilgængelige API'en til at skabe udtrykket.
