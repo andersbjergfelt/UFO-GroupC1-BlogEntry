@@ -48,9 +48,9 @@ Hvis en ondsindet bruger kunne manipulere dataene, der blev sendt til operatøre
 
 Og en anden en:
 
-``javascript
+```javascript
 db.myCollection.find( { $where: "this.someID > this.anotherID" } );
-``
+```
 I dette tilfælde, hvis inputstrengen er '0; return true " ville ens $where blive evalueret som someID > 0;, returnere sandt og alle brugere vil blive returneret.
 Eller en ondsindet bruger kunne give dette '0; mens (true) {} ' som input og man ville komme ud for et DoS-angreb.
 
