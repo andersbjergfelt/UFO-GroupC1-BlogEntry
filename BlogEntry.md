@@ -45,18 +45,20 @@ MongoDB forventer BSON objekter. Det forhindrer ikke, at det er muligt at query 
 ```javascript 
 db.myCollection.find( { $where: "this.username == this.name" } );
 ```
-Hvis en ondsindet bruger kunne manipulere dataene, der blev sendt til operatøren $where og tilførte JavaScript, der skulle evalueres, kunne angrebet være string ''; return \ '' == \ '' og $where vil blive evalueret til this.name == ''; returnere '' == '', hvilket vil resultere i at alle brugere vil blive returneret i stedet for kun dem der matchede $where.
+Hvis en ondsindet bruger kunne manipulere dataene, der blev sendt til operatøren $where og tilførte JavaScript, der skulle evalueres, kunne angrebet være string ''; return \ '' == \ '' og $where vil blive evalueret til 
+this.name == ''; returnere '' == '', hvilket vil resultere i at alle brugere vil blive returneret i stedet for kun dem der matchede $where.
 
 Og en anden en:
 
-```javascript
+``javascript
 db.myCollection.find( { $where: "this.someID > this.anotherID" } );
-```
+``
 I dette tilfælde, hvis inputstrengen er '0; return true " ville ens $where blive evalueret som someID > 0;, returnere sandt og alle brugere vil blive returneret.
 Eller en ondsindet bruger kunne give dette '0; mens (true) {} ' som input og man ville komme ud for et DoS-angreb.
 
 Og en anden velkendt:
 Du modtager følgende forespørgsel:
+
 ```javascript
 {
     "username": {"$ne": null},
@@ -93,6 +95,7 @@ Her er en liste over de [mest populære javascript sanitize biblioteker](https:/
 * Det er også vigtigt ikke at bruge string concatenation til at opbygge API kald, men at bruge det tilgængelige API'en til at skabe udtrykket.
 
 Her er en hurtig måde at sikre sig i Java målrettet med en MongoDB
+
 ```java
 ArrayList<String> specialCharsList = new ArrayList<String>() {{
     add("'");
@@ -118,13 +121,13 @@ Arraylisten indeholder alle tegn, der har en særlig betydning i MongoDB. Det vi
 
 ## Opsummering
 
-[Populariteten af NoSQL databaser er stadig høj](https://db-engines.com/en/ranking_trend)
 
-NoSQL injections er stadigvæk et stort problem i dag. Til trods for at det er en trussel, der nemt kan overvindes, ved at “rense” eller “sanitize” alt input der sendes fra brugeren. På den måde er DU som udvikler med til at styre hvad der skal / ikke skal sendes til din database server. Yderligere skal man være opmærksom på særlige tegn som $where, mapReduce og group. Queries med disse tegn udføres direkte på serveren, og er derfor særligt følsomme overfor uønskede tegn. 
+
+NoSQL injections vil være et stort problem, så længe at folk forsømmer sikkerheden. Til trods for at det er en trussel, der nemt kan overvindes, ved at “rense” eller “sanitize” alt input der sendes fra brugeren. På den måde er DU som udvikler med til at styre hvad der skal / ikke skal sendes til din database server. Yderligere skal man være opmærksom på særlige tegn som $where, mapReduce og group. Queries med disse tegn udføres direkte på serveren, og er derfor særligt følsomme overfor uønskede tegn. Vi havde selv forsømt dette. 
 
 OWASP skriver at injektions er den farligste form for sårbarhed en application kan have, netop fordi at ondsindede bruger kan have fri adgang til din data. Hvilket i sidste ende kan resultere i at din data går tabt, eller kommer i hænderne på de forkerte folk. 
 
-For at sikre sig imod NoSQL injektioner, skal man huske ALTID at validere ALT input, der kommer fra brugere af systemet. Der findes et hav af gode biblioteker og andre sanitize værktøjer, som kan hjælpe dig. Yderligere kan man overveje helt at deaktivere serverside scripting med MongoDB med --noscripting nøgleordet.
+For at sikre sig imod NoSQL injektioner, skal man huske ALTID at validere ALT input, der kommer fra brugere af systemet. Der findes et hav af gode biblioteker og andre sanitize værktøjer, som kan hjælpe dig. Yderligere kan man overveje helt at deaktivere serverside scripting med MongoDB med --noscripting nøgleordet. [Populariteten af NoSQL databaser er stadig høj](https://db-engines.com/en/ranking_trend) og derfor skal man ikke forsømme sikkerheden på det område.
 
 Software sikkerhed har de sidste år været højt på dagsordenen, og vil i de næste mange år fortsætte med at være det indenfor softwareudvikling. Data er i dag i rigtig høj kurs, og derfor er det vigtigere end aldrig før at beskytte sine data imod at falde i de forkertes hænder. Det er simpelthen så vigtigt at man som udvikler, sikre sig ordentligt imod velkendte angreb. Der vil uden tvivl i fremtiden være et langt større fokus på sikkerhed indenfor IT og udvikling. 
 
