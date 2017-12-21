@@ -49,9 +49,9 @@ this.name == ''; returnere '' == '', hvilket vil resultere i at alle brugere vil
 
 Og en anden en:
 
-``javascript
+```javascript
 db.myCollection.find( { $where: "this.someID > this.anotherID" } );
-``
+```
 I dette tilfælde, hvis inputstrengen er '0; return true " ville ens $where blive evalueret som someID > 0;, returnere sandt og alle brugere vil blive returneret.
 Eller en ondsindet bruger kunne give dette '0; mens (true) {} ' som input og man ville komme ud for et DoS-angreb.
 
@@ -119,8 +119,6 @@ ArrayList<String> specialCharsList = new ArrayList<String>() {{
 Arraylisten indeholder alle tegn, der har en særlig betydning i MongoDB. Det vil forhindre at JavaScript kan blive eksekveret.
 
 ## Opsummering
-
-
 
 NoSQL injections vil være et stort problem, så længe at folk forsømmer sikkerheden. Til trods for at det er en trussel, der nemt kan overvindes, ved at “rense” eller “sanitize” alt input der sendes fra brugeren. På den måde er DU som udvikler med til at styre hvad der skal / ikke skal sendes til din database server. Yderligere skal man være opmærksom på særlige tegn som $where, mapReduce og group. Queries med disse tegn udføres direkte på serveren, og er derfor særligt følsomme overfor uønskede tegn. Vi havde selv forsømt dette. 
 
