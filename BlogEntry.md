@@ -35,7 +35,8 @@ Fordi nogle MongoDB operationer giver dig mulighed for at køre vilkårlige Java
 * $where
 * mapReduce
 * group
-I disse tilfælde skal du være varsom med at bruge de operationer. Hvis du bruger dem skal gøre alt for at forhindre ondsindede brugere i at sende ondsindet JavaScript.
+
+I disse tilfælde skal du være varsom med at bruge de operationer. Hvis du bruger dem skal gøre alt for at forhindre ondsindede brugere i at sende ondsindet JavaScript ved at "sanitize" inputfelter.
 
 
 ## Test af NoSQL injection sårbarheder i MongoDB
